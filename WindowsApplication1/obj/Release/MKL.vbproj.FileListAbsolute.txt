@@ -1,0 +1,10 @@
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\bin\Release\MKL.exe.config
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\bin\Release\MKL.exe
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\bin\Release\MKL.pdb
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\bin\Release\MKL.xml
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.Main.resources
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.Resources.resources
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.vbproj.GenerateResource.Cache
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.exe
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.xml
+D:\Projects\Ltrane\ActivityTracker\WindowsApplication1\obj\Release\MKL.pdb
