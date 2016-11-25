@@ -1,0 +1,10 @@
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\bin\Debug\MKL.exe.config
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\bin\Debug\MKL.exe
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\bin\Debug\MKL.pdb
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\bin\Debug\MKL.xml
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.Form1.resources
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.Resources.resources
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.vbproj.GenerateResource.Cache
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.exe
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.xml
+C:\Users\jeffl\Documents\Projects\TestProject\WindowsApplication1\WindowsApplication1\obj\Debug\MKL.pdb
