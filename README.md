@@ -2,7 +2,7 @@
 Application to monitor computer activity
 
 1. Download ffmpeg (https://ffmpeg.zeranoe.com/builds/) and copy to Program Files directory. Make sure the path in config.ini matches the location of ffmpeg.exe.
-2. Copy MKL.exe and config.ini to directory of choice and add a shortcut to the program in the user's start up folder (i.e. C:\Users\<%user_name%>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+2. Copy MKL.exe and config.ini from the Release directory to the directory of choice on your PC and add a shortcut to the program in the user's start up folder (i.e. C:\Users\<%user_name%>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
 
 config.ini
 ----------
