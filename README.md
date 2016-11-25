@@ -7,8 +7,14 @@ Application to monitor computer activity
 Config.ini
 ----------
 capture_path          = (String)  The path to which the logs, images, and video files will be stored
+
 path_to_ffmpeg        = (String)  The path to ffmpeg.exe
+
 caption_interval      = (Integer) The interval (in milliseconds) at which to capture the window title caption used for sorting the logs
+
 image_capture_interval= (Integer) The interval (in milliseconds) to capture images of the desktop
+
 capture_video         = (Boolean) If set to 1, captures the desktop activity to video
+
 capture_images        = (Boolean) If set to 1, captures images of the desktop at the interval specified by image_capture_interval
+
