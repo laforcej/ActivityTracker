@@ -12,6 +12,7 @@ Public Class Main
     Private mtmrTimer1 As Timer
     Private mtmrTimer2 As Timer
     Private mstrFolderPath As String
+    Private mstrLogFilePath As String
     Private mstrCurrentWindowName As String = "misc"
     Private mstrLastWindowName As String = ""
     Private mintTimerInterval1 As Integer
@@ -71,7 +72,7 @@ Public Class Main
             Dim strText As String
 
             strText = srdrMyStreamReader.ReadLine
-            mstrFolderPath = strText.Split("=")(1) & "\" & Environment.UserName
+            mstrFolderPath = strText.Split("=")(1) & Environment.UserName & "\"
 
             strText = srdrMyStreamReader.ReadLine
             mstrFFMPEGPath = strText.Split("=")(1)
@@ -98,6 +99,13 @@ Public Class Main
 
             WriteLog(ex.Message)
         End Try
+
+        'Create the main directory if it doesn't exist
+        If Not Directory.Exists(mstrFolderPath) Then
+            Directory.CreateDirectory(mstrFolderPath)
+        End If
+
+        mstrLogFilePath = mstrFolderPath & "\log.txt"
 
     End Sub
 
@@ -547,7 +555,7 @@ Public Class Main
     End Function
 
     Private Sub WriteLog(ByVal _strMsg As String)
-        Using stwMyStreamWriter As StreamWriter = File.AppendText(mstrFolderPath & "\log.txt")
+        Using stwMyStreamWriter As StreamWriter = File.AppendText(mstrLogFilePath)
             'Write the contents to the log file
             stwMyStreamWriter.WriteLine("[" & Now & "] " & _strMsg)
 
