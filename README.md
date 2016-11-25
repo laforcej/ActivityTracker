@@ -12,4 +12,3 @@ caption_interval      = (Integer) The interval (in milliseconds) at which to cap
 image_capture_interval= (Integer) The interval (in milliseconds) to capture images of the desktop
 capture_video         = (Boolean) If set to 1, captures the desktop activity to video
 capture_images        = (Boolean) If set to 1, captures images of the desktop at the interval specified by image_capture_interval
-
