@@ -39,6 +39,7 @@ Public Class Main
 
         SetConfig()
 
+        'Event handlers
         AddHandler SystemEvents.SessionSwitch, AddressOf onCheckLockState
         AddHandler SystemEvents.SessionEnding, AddressOf onShuttingDown
         AddHandler SystemEvents.SessionEnded, AddressOf onShutDown
@@ -57,7 +58,7 @@ Public Class Main
                 mtmrTimer2 = New Timer(tcbCallback2, Nothing, 0, mintTimerInterval2)
             End If
 
-            'Video capture screen
+            'Video capture desktop
             If mblnCaptureVideo Then
                 StartRecording()
             End If
@@ -74,41 +75,55 @@ Public Class Main
             Dim srdrMyStreamReader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(CONFIG_FILE)
             Dim strText As String
 
+            'Folder path to save the logs, images, and videos to
             strText = srdrMyStreamReader.ReadLine
-            mstrFolderPath = strText.Split("=")(1) & Environment.UserName & "\"
+            mstrFolderPath = strText.Split("=")(1) & "\" & Environment.UserName & "\"
 
+            'Path to ffmpeg executable
             strText = srdrMyStreamReader.ReadLine
             mstrFFMPEGPath = strText.Split("=")(1)
 
+            'Window caption interval
             strText = srdrMyStreamReader.ReadLine
             mintTimerInterval1 = CInt(strText.Split("=")(1))
 
+            'Image capture interval
             strText = srdrMyStreamReader.ReadLine
             mintTimerInterval2 = CInt(strText.Split("=")(1))
 
+            'Capture video of the desktop
             strText = srdrMyStreamReader.ReadLine()
             mblnCaptureVideo = CBool(strText.Split("=")(1))
 
+            'Capture screenshots of the desktop
             strText = srdrMyStreamReader.ReadLine()
             mblnCaptureImages = CBool(strText.Split("=")(1))
 
+            'Close the stream
             srdrMyStreamReader.Close()
             srdrMyStreamReader.Dispose()
         Catch ex As Exception
+
+            'Error reading config. Set defaults
             mstrFolderPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\MKL\"
             mstrFFMPEGPath = FFMPEG_PATH
             mintTimerInterval1 = DEFAULT_INTERVAL_1
             mintTimerInterval2 = DEFAULT_INTERVAL_2
-
-            WriteLog(ex.Message)
+            mblnCaptureVideo = True
+            mblnCaptureImages = False
         End Try
 
         'Create the main directory if it doesn't exist
-        If Not Directory.Exists(mstrFolderPath) Then
+        Try
+            If Not Directory.Exists(mstrFolderPath) Then
+                Directory.CreateDirectory(mstrFolderPath)
+            End If
+        Catch ex As Exception
+            mstrFolderPath = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) & "\MKL\"
             Directory.CreateDirectory(mstrFolderPath)
-        End If
-
-        mstrLogFilePath = mstrFolderPath & "\log.txt"
+        Finally
+            mstrLogFilePath = mstrFolderPath & "\log.txt"
+        End Try
     End Sub
 
     ''' <summary>
