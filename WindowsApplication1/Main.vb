@@ -68,7 +68,7 @@ Public Class Main
     End Sub
 
     ''' <summary>
-    ''' 
+    ''' Config
     ''' </summary>
     Private Sub SetConfig()
         Try
